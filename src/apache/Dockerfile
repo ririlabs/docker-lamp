@@ -18,9 +18,19 @@ RUN apt-get update && \
 # Set default ENV vars
 ENV APACHE_LISTEN_HTTP=8080
 ENV APACHE_LISTEN_HTTPS=8443
+ENV APACHE_DOCUMENT_ROOT=/var/www/vhost/public_html
+ENV APACHE_SSL_DIR=/secrets/
+ENV APACHE_CERT_PATH=${APACHE_SSL_DIR}/vhost.cert
+ENV APACHE_KEY_PATH=${APACHE_SSL_DIR}/vhost.key
 
-# Configure Apache. Disable default site, update permissions, and use custom listen ports.
-RUN a2dissite 000-default.conf && \
+# Copy Virtual Host file
+COPY vhost.conf /etc/apache2/sites-available
+
+# Configure Apache. Create directories, adjust permissions, and modify config files.
+RUN mkdir -p ${APACHE_DOCUMENT_ROOT} && \
+    mkdir -p ${APACHE_SSL_DIR} && \
+    a2dissite 000-default.conf && \
+    a2ensite vhost.conf && \
     chown -R appuser:appuser /var/log/apache2 && \
     chown appuser:appuser /var/run/apache2 && \
     sed -i 's/\<Listen 80\>/Listen ${APACHE_LISTEN_HTTP}/' /etc/apache2/ports.conf && \
@@ -28,12 +38,11 @@ RUN a2dissite 000-default.conf && \
 
 # Export volumes as root
 VOLUME /var/www/
-VOLUME /etc/apache2/
 
 # Switch to non-priviledged user to run our application
 USER appuser
 
 # Export volumes as appuser
-VOLUME /var/log/apache2
+VOLUME /var/log/apache2/
 
 CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"]

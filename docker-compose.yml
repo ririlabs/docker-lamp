@@ -5,17 +5,26 @@ services:
     image: silkrad/apache-php:latest
     build: 
       context: ./src/apache
-    env_file:
+    env-file:
       - ./config/apache/apache.env
     ports:
       - "80:8080"
       - "443:8443"
-    volumes: 
+    volumes:
       - apache-www:/var/www/
       - apache-log:/var/log/apache2/
-      - apache-config:/etc/apache2
+    secrets:
+      - source: vhost.cert
+        target: /secrets/vhost.cert
+      - source: vhost.key
+        target: /secrets/vhost.key
+
+secrets:
+  vhost.cert:
+    file: ./config/apache/vhost.cert
+  vhost.key:
+    file: ./config/apache/vhost.key
 
 volumes:
   apache-www:
   apache-log:
-  apache-config:
