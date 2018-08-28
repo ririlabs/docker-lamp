@@ -1,11 +1,11 @@
-version: "3"
+version: "3.4"
 
 services:
   apache:
     image: silkrad/apache-php:latest
     build: 
       context: ./src/apache
-    env-file:
+    env_file:
       - ./config/apache/apache.env
     ports:
       - "80:8080"

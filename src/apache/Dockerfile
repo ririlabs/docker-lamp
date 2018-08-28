@@ -33,6 +33,7 @@ RUN mkdir -p ${APACHE_DOCUMENT_ROOT} && \
     a2ensite vhost.conf && \
     chown -R appuser:appuser /var/log/apache2 && \
     chown appuser:appuser /var/run/apache2 && \
+    a2enmod ssl && \
     sed -i 's/\<Listen 80\>/Listen ${APACHE_LISTEN_HTTP}/' /etc/apache2/ports.conf && \
     sed -i 's/\<Listen 443\>/Listen ${APACHE_LISTEN_HTTPS}/' /etc/apache2/ports.conf
 
