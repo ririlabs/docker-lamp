@@ -1,14 +1,21 @@
 version: "3"
 
 services:
-  apace:
+  apache:
+    image: silkrad/apache-php:latest
     build: 
       context: ./dockerfiles/apache
+    env_file:
+      - ./config/apache.env
     ports:
-      - "80:80"
-      - "443:443"
+      - "80:8080"
+      - "443:8443"
     volumes: 
-      - apache:/var/www/html
+      - apache-www:/var/www/
+      - apache-log:/var/log/apache2/
+      - apache-config:/etc/apache2
 
 volumes:
-  apache:
+  apache-www:
+  apache-log:
+  apache-config:
