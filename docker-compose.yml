@@ -4,7 +4,7 @@ services:
   apache:
     image: silkrad/apache-php:latest
     build: 
-      context: ./dockerfiles/apache
+      context: ./src/apache
     env_file:
       - ./config/apache.env
     ports:
