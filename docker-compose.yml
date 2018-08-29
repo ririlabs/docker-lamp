@@ -23,8 +23,8 @@ services:
     image: silkrad/mysql:latest
     build:
       context: ./src/mysql
-    ports:
-      - "3306:3306"
+    env_file:
+      - ./config/mysql/mysql.env
     volumes:
       - mysql-data:/var/lib/mysql
       - mysql-log:/var/log/mysql
@@ -34,6 +34,8 @@ secrets:
     file: ./config/apache/vhost.cert
   vhost.key:
     file: ./config/apache/vhost.key
+  mysqlpw:
+    file: ./config/mysql/mysqlpw
 
 volumes:
   apache-www:
