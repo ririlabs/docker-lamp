@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
   apache:
-    image: silkrad/apache-php:latest
+    image: silkrad/apache:latest
     build: 
       context: ./src/apache
     env_file:
@@ -18,6 +18,16 @@ services:
         target: /secrets/vhost.cert
       - source: vhost.key
         target: /secrets/vhost.key
+  
+  mysql:
+    image: silkrad/mysql:latest
+    build:
+      context: ./src/mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - mysql-log:/var/log/mysql
 
 secrets:
   vhost.cert:
@@ -28,3 +38,5 @@ secrets:
 volumes:
   apache-www:
   apache-log:
+  mysql-data:
+  mysql-log:
