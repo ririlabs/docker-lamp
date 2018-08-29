@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 # Metadata information
 LABEL author="Ricardo Rivera"
 LABEL website="https://www.softwaredefinedengineer.com"
-LABEL version="0.1"
+LABEL version="0.2"
 LABEL description="Apache server with PHP."
 
 # Our default user that will run applications on the container
@@ -19,7 +19,7 @@ RUN apt-get update && \
 ENV APACHE_LISTEN_HTTP=8080
 ENV APACHE_LISTEN_HTTPS=8443
 ENV APACHE_DOCUMENT_ROOT=/var/www/vhost/public_html
-ENV APACHE_SSL_DIR=/secrets/
+ENV APACHE_SSL_DIR=/secrets
 ENV APACHE_CERT_PATH=${APACHE_SSL_DIR}/vhost.cert
 ENV APACHE_KEY_PATH=${APACHE_SSL_DIR}/vhost.key
 
