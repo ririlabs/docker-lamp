@@ -1,4 +1,4 @@
-FROM mysql:8
+FROM mysql:5.7
 
 # Metadata information
 LABEL author="Ricardo Rivera"
