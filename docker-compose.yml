@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
   apache:
-    image: silkrad/apache:latest
+    image: silkrad/lamp-apache:latest
     build: 
       context: ./src/apache
     env_file:
@@ -21,7 +21,7 @@ services:
       - source: vhost-key
         target: /run/secrets/vhost.key
   mysql:
-    image: silkrad/mysql:latest
+    image: silkrad/lamp-mysql:latest
     build:
       context: ./src/mysql
     env_file:
@@ -32,7 +32,6 @@ services:
     secrets:
       - source: mysql-root
         target: /run/secrets/mysql-root
-
 secrets:
   ca-cert:
     file: ./config/apache/secrets/ca.cert
@@ -42,7 +41,6 @@ secrets:
     file: ./config/apache/secrets/vhost.key
   mysql-root:
     file: ./config/mysql/secrets/mysql-root
-
 volumes:
   apache-www:
   apache-log:

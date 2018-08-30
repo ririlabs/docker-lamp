@@ -2,9 +2,8 @@ FROM ubuntu:18.04
 
 # Metadata information
 LABEL author="Ricardo Rivera"
-LABEL website="https://www.softwaredefinedengineer.com"
-LABEL version="0.2"
-LABEL description="Apache server with PHP."
+LABEL author_website="https://www.softwaredefinedengineer.com"
+LABEL description="Dockerized Apache web server with PHP"
 
 # Our default user that will run applications on the container
 RUN groupadd -g 999 appuser && \
