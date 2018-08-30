@@ -32,6 +32,15 @@ services:
     secrets:
       - source: mysql-root
         target: /run/secrets/mysql-root
+    secrets:
+      - source: mysql-db-name
+        target: /run/secrets/mysql-db-name
+    secrets:
+      - source: mysql-db-user
+        target: /run/secrets/mysql-db-user
+    secrets:
+      - source: mysql-db-pass
+        target: /run/secrets/mysql-db-pass
 secrets:
   ca-cert:
     file: ./config/apache/secrets/ca.cert
@@ -41,6 +50,12 @@ secrets:
     file: ./config/apache/secrets/vhost.key
   mysql-root:
     file: ./config/mysql/secrets/mysql-root
+  mysql-db-name:
+    file: ./config/mysql/secrets/mysql-db-name
+  mysql-db-user:
+    file: ./config/mysql/secrets/mysql-db-user
+  mysql-db-pass:
+    file: ./config/mysql/secrets/mysql-db-pass
 volumes:
   apache-www:
   apache-log:
