@@ -32,13 +32,10 @@ services:
     secrets:
       - source: mysql-root
         target: /run/secrets/mysql-root
-    secrets:
       - source: mysql-db-name
         target: /run/secrets/mysql-db-name
-    secrets:
       - source: mysql-db-user
         target: /run/secrets/mysql-db-user
-    secrets:
       - source: mysql-db-pass
         target: /run/secrets/mysql-db-pass
 secrets:
