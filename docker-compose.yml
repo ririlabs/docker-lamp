@@ -14,12 +14,12 @@ services:
       - apache-www:/var/www/
       - apache-log:/var/log/apache2/
     secrets:
-      - source: ca.cert
-        target: /secrets/ca.cert
-      - source: vhost.cert
-        target: /secrets/vhost.cert
-      - source: vhost.key
-        target: /secrets/vhost.key
+      - source: ca-cert
+        target: /run/secrets/ca.cert
+      - source: vhost-cert
+        target: /run/secrets/vhost.cert
+      - source: vhost-key
+        target: /run/secrets/vhost.key
   mysql:
     image: silkrad/mysql:latest
     build:
@@ -29,16 +29,19 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
       - mysql-log:/var/log/mysql
+    secrets:
+      - source: mysql-root
+        target: /run/secrets/mysql-root
 
 secrets:
-  ca.cert:
-    file: ./config/apache/ca.cert
-  vhost.cert:
-    file: ./config/apache/vhost.cert
-  vhost.key:
-    file: ./config/apache/vhost.key
-  mysqlpw:
-    file: ./config/mysql/mysqlpw
+  ca-cert:
+    file: ./config/apache/secrets/ca.cert
+  vhost-cert:
+    file: ./config/apache/secrets/vhost.cert
+  vhost-key:
+    file: ./config/apache/secrets/vhost.key
+  mysql-root:
+    file: ./config/mysql/secrets/mysql-root
 
 volumes:
   apache-www:
