@@ -1,9 +1,9 @@
 # Docker LAMP Server
 This is a basic Linux/Apache/MySQL/PHP server using Docker Compose. The server stack consists of the following:
-* Ubuntu 18.04 
-* Apache 2.4
-* MySQL 5.7
-* PHP 7.2
+- Ubuntu 18.04 
+- Apache 2.4
+- MySQL 5.7
+- PHP 7.2
 
 All configuration for the lamp stack should be done under the <code>config</code> folder. 
 
@@ -82,9 +82,13 @@ The database user to use for the database. Set during initial run.
 The database password to use for the database. Set during initial run.
 
 
-## Installing as a service on Ubuntu
-1. Clone the repository into `/opt/dockerapps/docker-lamp`.
-2. Properly configure the options under the `config` folder.
-3. Copy `systemd/docker-lamp.service` unit file into `/lib/systemd/system/docker-lamp.service`.
-4. Optionally, you may modify the docker-lamp.service systemd unit file to match your preferences or work with other Linux distributions.
-5. Use `systemctl start docker-lamp` to start the lamp server.
+## Running the LAMP Server
+This application uses Docker Compose to build images and configure the services appropiately. Simply clone this repository into your desired location and run `docker-compose up -d` to run in detached mode.
+
+## Installing as a Service
+You may optionally choose to install the LAMP server as a service on your system. Note that these instructions have only been tested in Ubuntu 18.04.
+- Clone the repository into `/opt/dockerapps/docker-lamp`.
+- Properly configure the options under the `config` folder.
+- Copy `systemd/docker-lamp.service` unit file into `/lib/systemd/system/docker-lamp.service`.
+- Optionally, you may modify the docker-lamp.service systemd unit file to match your preferences or work with other Linux distributions.
+- Use `systemctl start docker-lamp` to start the lamp server.
