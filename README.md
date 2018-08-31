@@ -92,3 +92,6 @@ You may optionally choose to install the LAMP server as a service on your system
 - Copy `systemd/docker-lamp.service` unit file into `/lib/systemd/system/docker-lamp.service`.
 - Optionally, you may modify the docker-lamp.service systemd unit file to match your preferences or work with other Linux distributions.
 - Use `systemctl start docker-lamp` to start the lamp server.
+
+## Copying Website Files into the Virtual Host Root Directory
+This application utilizes built-in docker volumes to store all its data. It does not use bind volumes for portability reasons. You will need to copy your website into `/var/lib/docker/volumes/dockerlamp_apache-www/_data/vhost/public_html`. Note that this location may change based on your Linux distribution and container name.
