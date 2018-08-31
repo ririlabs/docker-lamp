@@ -40,7 +40,6 @@ Used only for `HTTPS` traffic. The private SSL key for your domain.
 ### Optional
 You may choose to modify the `src/apache/vhost.conf` which would allow you to turn off HTTPS, add more virtual hosts, and change other parameters in the Apache configuration. Note that modifying this file will require a rebuild of the Apache image for it to take effect.
 
-
 ## MySQL Configuration
 
 ### Environment Variables
