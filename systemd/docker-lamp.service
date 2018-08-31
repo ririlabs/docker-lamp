@@ -1,5 +1,5 @@
 [Unit]
-Description=Docker LAMP server starter
+Description=Docker LAMP server
 After=docker.service network-online.target
 Requires=docker.service network-online.target
 
