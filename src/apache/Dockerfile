@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 # Metadata information
 LABEL author="Ricardo Rivera"
-LABEL author_website="https://www.softwaredefinedengineer.com"
+LABEL author_website="https://www.ririlabs.com"
 LABEL description="Dockerized Apache web server with PHP"
 
 # Our default user that will run applications on the container

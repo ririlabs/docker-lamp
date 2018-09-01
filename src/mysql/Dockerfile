@@ -2,7 +2,7 @@ FROM mysql:5.7
 
 # Metadata information
 LABEL author="Ricardo Rivera"
-LABEL author_website="https://www.softwaredefinedengineer.com"
+LABEL author_website="https://www.ririlabs.com"
 LABEL description="Dockerized MySQL server"
 
 # Update system and install necessary packages
