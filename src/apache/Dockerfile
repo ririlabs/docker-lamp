@@ -12,7 +12,7 @@ RUN groupadd -g 999 appuser && \
 # Update system and install necessary packages
 RUN apt-get update && \
     apt-get -y upgrade && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 php php-mysql libapache2-mod-php
+    DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 php php-mysql libapache2-mod-php php-gd
 
 # Set default ENV vars
 ENV APACHE_LISTEN_HTTP=8080
